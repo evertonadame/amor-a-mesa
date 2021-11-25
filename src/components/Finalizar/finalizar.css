@@ -1,0 +1,27 @@
+.finalizar {
+    padding-top: 6rem;
+}
+
+.finalizar__paper {
+    padding: 2rem;
+}
+
+.endereço--titulo {
+    padding: 2rem 0;
+}
+
+.titulo--entrega{
+    padding-bottom: .3rem;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+}
+
+.botao--entrega{
+   margin-top: 1rem;
+   
+}
+
+.image--resumo {
+    width: 3rem;
+}

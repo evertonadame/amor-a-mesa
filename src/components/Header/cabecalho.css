@@ -1,0 +1,32 @@
+.cabecalho {
+   
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    box-sizing: border-box;
+    width: 100%;
+    padding-top:.45rem;
+    padding-bottom:.45rem;
+    position: fixed;
+    top: 0;
+    background-color: var(--branco);
+    z-index: 10;
+    height: 4rem;
+
+}
+
+.cabecalho__logo {
+    width: 3.125rem;
+}
+.cabecalho__carrinho {
+    width: 2.75rem;
+}
+
+.badge--carrinho {
+    height: 3.455rem;
+    z-index: 999;
+}
+.titulo-carrinho {
+    color: var(--amarelo);
+    padding-left: 1rem;
+}
