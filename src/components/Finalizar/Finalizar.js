@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Paper, Stepper, Step, StepLabel }  from '@material-ui/core';
+import {  Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import './finalizar.css';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import { commerce } from '../../pages/commerce';
+import { Link, useHistory } from 'react-router-dom';
 
 
 const steps = ['Endereço de entrega', 'Finalizar pagamento'];
@@ -19,6 +20,7 @@ const useStyles = makeStyles(() => ({
       }));
 
  const c = useStyles();
+ const history = useHistory();
 
 const [activeStep, setActiveStep] = useState(0);
 const [checkoutToken, setCheckoutToken] = useState(null);
@@ -32,12 +34,12 @@ useEffect(() => {
 
             setCheckoutToken(token);
         } catch (error) {
-
+                if (activeStep !== steps.length) history.push('/');
         }
     }
 
     generateToken();
-}, [cart]);
+}, [cart, history, activeStep]);
 
     const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
     const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -49,11 +51,31 @@ useEffect(() => {
 
     }
 
-    const Confirmation = () => (
-        <div>
-            Confirmation
-        </div>
-    )
+    let Confirmation = () => (order.customer ? (
+    <>
+      <div>
+        <Typography variant="h5">Obrigado por comprar em nossa loja, {order.customer.firstname} {order.customer.lastname}!</Typography>
+        <Divider />
+        <Typography variant="subtitle2">Pedido: {order.customer_reference}</Typography>
+      </div>
+      <br />
+      <Button component={Link} variant="outlined" type="button" to="/">Pagina inicial</Button>
+    </>
+  ) : (
+    <div>
+      <CircularProgress />
+    </div>
+  ));
+
+  if (error) {
+    Confirmation = () => (
+      <>
+        <Typography variant="h5">Error: {error}</Typography>
+        <br />
+        <Button component={Link} variant="outlined" type="button" to="/">Pagina inicial</Button>
+      </>
+    );
+  }
 
     const Form = () => activeStep === 0
      ? <AddressForm checkoutToken={checkoutToken} next={next} />

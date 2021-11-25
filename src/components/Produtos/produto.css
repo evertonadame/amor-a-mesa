@@ -48,6 +48,7 @@
     padding: .5rem;
     cursor: pointer;
     transition: .5s ease;
+    padding: 1.5rem;
    
 }
 
@@ -91,6 +92,7 @@
     bottom: 0;
     width: 40%;
     padding: .7rem;
+    margin: 1rem 1rem;
 }
 
 .modal--titulo{

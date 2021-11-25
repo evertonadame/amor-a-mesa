@@ -195,7 +195,8 @@ body {
     background-color: var(--branco);
     box-shadow: 10px 10px 30px var(--preto-transparent);
     box-sizing: border-box;
-    min-height: 15.5rem;
+    min-height: 17rem;
+   
     
 }
 .botao--carrinho{
